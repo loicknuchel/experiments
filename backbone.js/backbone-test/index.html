@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
+
+	<title>Démo projet</title>
+	<meta name="description" content="Démo projet">
+	<meta name="author" content="Loïc Knuchel">
+
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/libs/modernizr.js"></script>
+	<script data-main="js/main" src="js/require.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="">Démo projet</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="span4 require-block" data-require="highlight-widget">
+          <h2>Démo projet</h2>
+            <p>
+              Ceci est un projet de démonstration et de test sur la structure du code JavaScript.<br/>
+            </p>
+        </div>
+        
+        <div class="span4 require-block" data-require="user-widget">
+          <h2>Mon widget</h2>
+          <form class="form-inline">
+            <input type="text" class="js-input" name="userName" placeholder="user name" />
+            <input type="submit" class="btn js-submit" value="ajouter" />
+          </form>
+          <ol class="js-userList"></ol>
+          <span class="btn js-sort-name"  >trier par nom</span>
+          <span class="btn js-sort-length">trier par taille</span>
+          <span class="btn js-shuffle"    >mélanger</span>
+          <span class="btn js-clear"      >vider</span>
+        </div>
+        
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>Loïc Knuchel le 06/06/2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+</body>
+</html>

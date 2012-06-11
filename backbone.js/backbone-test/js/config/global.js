@@ -1,4 +1,0 @@
-
-define({
-  appName: "my app"
-});

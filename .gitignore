@@ -1,2 +1,4 @@
-backbone.js/backbone-boilerplate-big
-backbone.js/backbone-boilerplate-small
+backbone/backbone-boilerplate-big
+backbone/backbone-boilerplate-small
+README
+*.project

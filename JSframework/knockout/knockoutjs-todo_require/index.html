@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Knockout.js • TodoMVC</title>
 	<link rel="stylesheet" href="assets/base.css">
+	<link rel="stylesheet" href="css/styles.css">
 	<!--[if IE]>
 	<script src="assets/ie.js"></script>
 	<![endif]-->
@@ -25,6 +26,7 @@
 					<div class="view" data-bind="event: { dblclick: $root.editItem }">
 						<input class="toggle" type="checkbox" data-bind="checked: completed">
 						<label data-bind="text: title"></label>
+						<button class="play" data-bind="click: $root.play"></button>
 						<button class="destroy" data-bind="click: $root.remove"></button>
 					</div>
 					<input class="edit" data-bind="value: title, valueUpdate: 'afterkeydown', enterKey: $root.stopEditing, selectAndFocus: editing, event: { blur: $root.stopEditing }" >

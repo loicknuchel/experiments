@@ -1,0 +1,19 @@
+User {
+  String name;
+  Task[] tasks;
+  Boolean sync;
+}
+
+Task {
+  String name;
+  Run[] runs;
+  Boolean editing;
+  Boolean running;
+  Boolean archive;
+  Boolean done;
+}
+
+Run {
+  Time start;
+  Time stop;
+}

@@ -1,0 +1,16 @@
+
+#task-list li .view {
+  display: block;
+}
+
+#task-list li.editing .view {
+  display: none;
+}
+
+#task-list li .edit {
+  display: none;
+}
+
+#task-list li.editing .edit {
+  display: block;
+}

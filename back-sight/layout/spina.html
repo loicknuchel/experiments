@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=1024, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Spina</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/spina/reset.css">
+  <link rel="stylesheet" href="css/spina/icons.css">
+  <link rel="stylesheet" href="css/spina/formalize.css">
+  <link rel="stylesheet" href="css/spina/checkboxes.css">
+  <link rel="stylesheet" href="css/spina/sourcerer.css">
+  <link rel="stylesheet" href="css/spina/jqueryui.css">
+  <link rel="stylesheet" href="css/spina/tipsy.css">
+  <link rel="stylesheet" href="css/spina/calendar.css">
+  <link rel="stylesheet" href="css/spina/tags.css">
+  <link rel="stylesheet" href="css/spina/fonts.css">
+  <link rel="stylesheet" href="css/spina/selectboxes.css">
+  <link rel="stylesheet" href="css/spina/960.css">
+  <link rel="stylesheet" href="css/spina/main.css">
+  
+  <!-- JavaScript -->
+  <script src="js/spina/jquery.min.js"></script>
+  <script src="js/spina/jqueryui.min.js"></script>
+  <script src="js/spina/jquery.cookies.js"></script>
+  <script src="js/spina/jquery.pjax.js"></script>
+  <script src="js/spina/formalize.min.js"></script>
+  <script src="js/spina/jquery.metadata.js"></script>
+  <script src="js/spina/jquery.validate.js"></script>
+  <script src="js/spina/jquery.checkboxes.js"></script>
+  <script src="js/spina/jquery.chosen.js"></script>
+  <script src="js/spina/jquery.fileinput.js"></script>
+  <script src="js/spina/jquery.datatables.js"></script>
+  <script src="js/spina/jquery.sourcerer.js"></script>
+  <script src="js/spina/jquery.tipsy.js"></script>
+  <script src="js/spina/jquery.calendar.js"></script>
+  <script src="js/spina/jquery.inputtags.min.js"></script>
+  <script src="js/spina/jquery.wymeditor.js"></script>
+  <script src="js/spina/jquery.livequery.js"></script>
+  <script src="js/spina/jquery.flot.min.js"></script>
+  <script src="js/spina/application.js"></script>
+</head>
+<body>
+  <!-- Primary navigation -->
+  <nav id="primary">
+    <ul>
+      <li class="active">
+        <a href="#">
+          <span class="glyph dashboard"></span>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph shuffle"></span>
+          UI Elements
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph pencil"></span>
+          Forms
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph listicon"></span>
+          Tables
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph chart"></span>
+          Charts
+        </a>
+      </li>
+      <li class="bottom">
+        <a href="index.html">
+          <span class="glyph quit"></span>
+          Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+    
+    <!-- Secondary navigation -->
+    <nav id="secondary">
+      <ul>
+        <li class=""><a href="#">Dashboard</a></li>
+        <li class="active"><a href="#">Last user activities</a></li>
+        <li class=""><a href="#">System logs</a></li>  
+      </ul>
+      <div id="notifications" style="max-height: 754px; "><a href="#">Show all notifications</a>
+        <ul>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- Main content -->
+    <section id="maincontainer">
+      <div id="main" class="container_12">
+        <div class="quick-actions">
+          <a href="http://spina.denk-groot.nl/dashboard#quickpost" class="modal">
+            <span class="glyph new"></span>
+            Quick Post
+          </a>
+          <a href="#">
+            <span class="glyph export"></span>
+            Export Table
+          </a>
+          <a href="#" class="disabled">
+            <span class="glyph switch"></span>
+            Turn off
+          </a>
+        </div>
+        <div class="box column-left">
+          <div class="box-header">
+            <span class="glyph chart"></span><h1>Statistics</h1>
+          </div>
+          <ul class="statistics">
+            <li>
+              <a href="#">
+                <span>1.3k</span>
+                New visitors
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>23</span>
+                Returning visitors
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>16%</span>
+                Bounce rate
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>7%</span>
+                Increase since last month
+              </a>
+            </li>
+          </ul>
+          <div class="action_bar">
+            <a href="#" class="button small"><span class="glyph export"></span>Export data</a>
+            <a href="#" class="button small"><span class="glyph print"></span>Print statistics</a>
+          </div>
+        </div>
+
+        <div class="box column-right">    
+          <div class="box-header">
+            <h1>Current Hosting Plan</h1>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Webhosting:</td>
+                <td><strong>VPS Server 1</strong></td>
+              </tr>
+              <tr>
+                <td>Available space:</td>
+                <td>239/1000 GB used</td>
+              </tr>
+              <tr>
+                <td>MySQL databases:</td>
+                <td class="red">5/5 used</td>
+              </tr>
+              <tr>
+                <td>Email accounts:</td>
+                <td class="red">25/25 used</td>
+              </tr>
+              <tr>
+                <td>Ruby version:</td>
+                <td>1.9.3</td>
+              </tr>
+              <tr>
+                <td>Rails version:</td>
+                <td>3.0.1</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="action_bar">
+            <a href="#" class="button blue"><span class="glyph plus2"></span>Upgrade plan</a>
+            <a href="#">Cancel subscription</a>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>

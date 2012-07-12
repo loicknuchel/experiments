@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)http://www.alessioatzeni.com/wp-content/tutorials/html-css/CSS3-Tooltip-with-Animation-NO-jQuery/index.html -->
+<html autopagermatchedrules="1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>index</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/login/slide.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/preloader.css" />
+	<link rel="stylesheet" type="text/css" href="css/loader.css" />
+	<link rel="stylesheet" type="text/css" href="css/clock.css" />
+	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+  
+  <style type="text/css">
+    
+  </style>
+  
+  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/preloader.js"></script>
+  <script type="text/javascript" src="js/clock.js"></script>
+  <script type="text/javascript" src="js/accordion.js"></script>
+  <script type="text/javascript" src="js/login/slide.js"></script>
+</head>
+<body>
+  <div class="preloader-container">
+    
+    <div id="toppanel">
+      <div id="panel">
+        <div class="content clearfix">
+          <div class="left">
+            <h1>The Sliding jQuery Panel</h1>
+            <h2>A register/login solution</h2>		
+            <p class="grey">You are free to use this login and registration system in you sites!</p>
+            <p>You can log in with: <strong>admin/admin</strong></p>
+            <h2>A Big Thanks</h2>
+            <p class="grey">This tutorial was built on top of <a href="http://web-kreation.com/index.php/tutorials/nice-clean-sliding-login-panel-built-with-jquery" title="Go to site">Web-Kreation</a>'s amazing sliding panel.</p>
+          </div>
+          <div class="left">
+            <!-- Login Form -->
+            <form class="clearfix" action="" method="post">
+              <h1>Member Login</h1>
+              <label class="grey" for="username">Username:</label>
+              <input class="field" type="text" name="username" id="username" value="" size="23" />
+              <label class="grey" for="password">Password:</label>
+              <input class="field" type="password" name="password" id="password" size="23" />
+              <label><input name="rememberMe" id="rememberMe" type="checkbox" checked="checked" value="1" /> &nbsp;Remember me</label>
+              <div class="clear"></div>
+              <input type="submit" name="submit" value="Login" class="bt_login" />
+              <span class="lost-pwd">Try it with admin/admin</span>
+            </form>
+          </div>
+          <div class="left right">			
+            <!-- Register Form -->
+            <form action="" method="post">
+              <h1>Not a member yet? Sign Up!</h1>		
+              <label class="grey" for="username">Username:</label>
+              <input class="field" type="text" name="username" id="username" value="" size="23" />
+              <label class="grey" for="email">Email:</label>
+              <input class="field" type="text" name="email" id="email" size="23" />
+              <label>A password will be e-mailed to you.</label>
+              <input type="submit" name="submit" value="Register" class="bt_register" />
+            </form>
+          </div>
+        </div>
+      </div> <!-- /login -->	
+
+      <!-- The tab on top -->	
+      <div class="tab">
+        <ul class="login">
+          <li class="left">&nbsp;</li>
+          <li>Hello Guest!</li>
+          <li class="sep">|</li>
+          <li id="toggle">
+            <a id="open" class="open" href="#">Log In | Register</a>
+            <a id="close" style="display: none;" class="close" href="#">Close Panel</a>			
+          </li>
+          <li class="right">&nbsp;</li>
+        </ul> 
+      </div> <!-- / top -->
+    </div> <!--panel -->
+    <div style="height: 10px;"></div>
+
+
+  
+  
+  
+    
+    <div class="accordion-container">
+      <ul class="accordion">
+        <li id="one" class="files">
+          <a href="#one">My Files<span>495</span></a>
+          <ul class="sub-menu">
+            <li><a href="#one"><em>01</em>Dropbox<span>42</span></a></li>
+            <li><a href="#one"><em>02</em>Skydrive<span>87</span></a></li>
+            <li><a href="#one"><em>03</em>FTP Server<span>366</span></a></li>
+          </ul>
+        </li>
+        <li id="two" class="mail">
+          <a href="#two">Mail<span>26</span></a>
+          <ul class="sub-menu">
+            <li><a href="#two"><em>01</em>Hotmail<span>9</span></a></li>
+            <li><a href="#two"><em>03</em>Gmail<span>3</span></a></li>
+          </ul>
+        </li>
+        <li id="three" class="cloud">
+          <a href="#three">Cloud<span>58</span></a>
+          <ul class="sub-menu">
+            <li><a href="#three"><em>01</em>Connect<span>12</span></a></li>
+            <li><a href="#three"><em>02</em>Profiles<span>19</span></a></li>
+            <li><a href="#three"><em>03</em>Options<span>27</span></a></li>
+            <li><a href="#three"><em>04</em>Connect<span>12</span></a></li>
+            <li><a href="#three"><em>05</em>Profiles<span>19</span></a></li>
+            <li><a href="#three"><em>06</em>Options<span>27</span></a></li>
+          </ul>
+        </li>
+        <li id="four" class="sign">
+          <a href="#four">Sign Out</a>
+          <ul class="sub-menu">
+            <li><a href="#four"><em>01</em>Log Out</a></li>
+            <li><a href="#four"><em>02</em>Delete Account</a></li>
+            <li><a href="#four"><em>03</em>Freeze Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    
+    
+    
+  
+    <h1>CSS3 Tooltip with Animation No jQuery<small>Tutorial by Alessio Atzeni | <a href="#">View Tutorial</a></small></h1>
+    
+    <div class="loader-container">
+      <div class="content">
+        <div class="ball"></div>
+        <div class="ball1"></div>
+        </div>
+    </div>
+    
+    <div class="clock-container">
+      <div class="clock">
+       <div id="Date"></div>
+          <ul>
+              <li id="hours"></li>
+              <li id="point">:</li>
+              <li id="min"></li>
+              <li id="point">:</li>
+              <li id="sec"></li>
+          </ul>
+      </div>
+    </div>
+    
+    
+    
+    
+    <footer id="masterpanel">
+      <ul id="mainpanel">
+        <li><a href="index.html" class="logout"><small>Logout</small></a></li>
+        <li><a href="#" class="dribble"><small>Dribble</small></a></li>
+        <li><a href="#" class="forrst"><small>Forrst</small></a></li>
+        <li><a href="#" class="facebook"><small>Facebook</small></a></li>
+        <li><a href="#" class="twitter"><small>Twitter</small></a></li>
+        <li><a href="#" class="google"><small>Google+</small></a></li>
+        <li><a href="#" class="linked"><small>LinkedIn</small></a></li>
+        </ul>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1024, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Back-sight</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="css/spina/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/spina/icons.css" />
+  <link rel="stylesheet" type="text/css" href="css/spina/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <style type="text/css">
+    .accordion-container {
+      margin-top: 0px;
+      margin-right: 0px;
+      float: left;
+      height: 100%;
+      width: 200px;
+      background: #4B4D51;
+    }
+    
+    .app-container {
+      height: 100%;
+      overflow: auto;
+    }
+  </style>
+  
+  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/accordion.js"></script>
+</head>
+<body>
+  <!-- Primary navigation -->
+  <nav id="primary">
+    <ul>
+      <li class="active">
+        <a href="#">
+          <span class="glyph dashboard"></span>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph shuffle"></span>
+          UI Elements
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph pencil"></span>
+          Forms
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph listicon"></span>
+          Tables
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="glyph chart"></span>
+          Charts
+        </a>
+      </li>
+      <li class="bottom">
+        <a href="index.html">
+          <span class="glyph quit"></span>
+          Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+    
+    <!-- Secondary navigation -->
+    <div class="accordion-container">
+      <ul class="accordion">
+        <li id="one" class="files">
+          <a href="#one">My Files<span>495</span></a>
+          <ul class="sub-menu">
+            <li><a href="#"><em>01</em>Dropbox<span>42</span></a></li>
+            <li><a href="#"><em>02</em>Skydrive<span>87</span></a></li>
+            <li><a href="#"><em>03</em>FTP Server<span>366</span></a></li>
+          </ul>
+        </li>
+        <li id="two" class="mail">
+          <a href="#two">Mail<span>26</span></a>
+          <ul class="sub-menu">
+            <li><a href="#"><em>01</em>Hotmail<span>9</span></a></li>
+            <li><a href="#"><em>03</em>Gmail<span>3</span></a></li>
+          </ul>
+        </li>
+        <li id="three" class="cloud">
+          <a href="#three">Cloud<span>58</span></a>
+          <ul class="sub-menu">
+            <li><a href="#"><em>01</em>Connect<span>12</span></a></li>
+            <li><a href="#"><em>02</em>Profiles<span>19</span></a></li>
+            <li><a href="#"><em>03</em>Options<span>27</span></a></li>
+            <li><a href="#"><em>04</em>Connect<span>12</span></a></li>
+            <li><a href="#"><em>05</em>Profiles<span>19</span></a></li>
+            <li><a href="#"><em>06</em>Options<span>27</span></a></li>
+          </ul>
+        </li>
+        <li id="four" class="sign">
+          <a href="#four">Sign Out</a>
+          <ul class="sub-menu">
+            <li><a href="#"><em>01</em>Log Out</a></li>
+            <li><a href="#"><em>02</em>Delete Account</a></li>
+            <li><a href="#"><em>03</em>Freeze Account</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="app-container">
+      
+      <footer id="masterpanel" style="margin-left: 300px;">
+        <ul id="mainpanel">
+          <li><a href="#" class="dribble"><small>Dribble</small></a></li>
+          <li><a href="#" class="forrst"><small>Forrst</small></a></li>
+          <li><a href="#" class="facebook"><small>Facebook</small></a></li>
+          <li><a href="#" class="twitter"><small>Twitter</small></a></li>
+          <li><a href="#" class="google"><small>Google+</small></a></li>
+          <li><a href="#" class="linked"><small>LinkedIn</small></a></li>
+          </ul>
+      </footer>
+    </div>
+    
+    
+</body>
+</html>

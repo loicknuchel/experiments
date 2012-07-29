@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Pictos';
+  src: url('../fonts/pictos-web.eot');
+  src: local('☺'), url('../fonts/pictos-web.woff') format('woff'), url('../fonts/pictos-web.ttf') format('truetype'),  url('../fonts/pictos-web.svg#webfontphKv1xv9') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.glyph                  { font-family: 'Pictos'; text-transform: none }
+
+.glyph.dock:after       { content: 'a' }
+.glyph.dropbox:after    { content: 'b' }
+.glyph.cloudup:after    { content: 'c' }
+.glyph.blocked:after    { content: 'd' }
+.glyph.lightning:after  { content: 'e' }
+.glyph.broadcast:after  { content: 'f' }
+.glyph.group:after      { content: 'g' }
+.glyph.help:after       { content: 'h' }
+.glyph.info:after       { content: 'i' }
+.glyph.link:after       { content: 'j' }
+.glyph.love:after       { content: 'k' }
+.glyph.listicon:after   { content: 'l' }
+.glyph.music:after      { content: 'm' }
+.glyph.note:after       { content: 'n' }
+.glyph.folder:after     { content: 'o' }
+.glyph.pencil:after     { content: 'p' }
+.glyph.chat:after       { content: 'q' }
+.glyph.restart:after    { content: 'r' }
+.glyph.search:after     { content: 's' }
+.glyph.time:after       { content: 't' }
+.glyph.switch:after     { content: 'u' }
+.glyph.camera:after     { content: 'v' }
+.glyph.balloon:after    { content: 'w' }
+.glyph.tools:after      { content: 'x' }
+.glyph.cog:after        { content: 'y' }
+.glyph.tags:after       { content: 'z' }
+.glyph.link2:after      { content: 'A' }
+.glyph.twitter:after    { content: 'B' }
+.glyph.cloud:after      { content: 'C' }
+.glyph.delete:after     { content: 'D' }
+.glyph.eye:after        { content: 'E' }
+.glyph.file:after       { content: 'F' }
+.glyph.global:after     { content: 'G' }
+.glyph.home:after       { content: 'H' }
+.glyph.inbox:after      { content: 'I' }
+.glyph.join:after       { content: 'J' }
+.glyph.key:after        { content: 'K' }
+.glyph.lens:after       { content: 'L' }
+.glyph.message:after    { content: 'M' }
+.glyph.news:after       { content: 'N' }
+.glyph.suitcase:after   { content: 'O' }
+.glyph.images:after     { content: 'P' }
+.glyph.quit:after       { content: 'Q' }
+.glyph.export:after     { content: 'R' }
+.glyph.star:after       { content: 'S' }
+.glyph.plane:after      { content: 'T' }
+.glyph.user:after       { content: 'U' }
+.glyph.video:after      { content: 'V' }
+.glyph.new:after        { content: 'W' }
+.glyph.truck:after      { content: 'X' }
+.glyph.chart:after      { content: 'Y' }
+.glyph.pie:after        { content: 'Z' }
+
+.glyph.fullscreen:after { content: '`' }
+.glyph.refresh:after    { content: '1' }
+.glyph.tick:after       { content: '2' }
+.glyph.tick2:after      { content: '3' }
+.glyph.play:after       { content: '4' }
+.glyph.pause:after      { content: '5' }
+.glyph.stop:after       { content: '6' }
+.glyph.forward:after    { content: '7' }
+.glyph.rewind:after     { content: '8' }
+.glyph.play2:after      { content: '9' }
+.glyph.replay:after     { content: '0' }
+.glyph.minus:after      { content: '-' }
+.glyph.battery:after    { content: '=' }
+.glyph.left:after       { content: '[' }
+.glyph.right:after      { content: ']' }
+.glyph.calendar:after   { content: '\\' }
+.glyph.shuffle:after    { content: ';' }
+.glyph.wifi:after       { content: "'" }
+.glyph.dashboard:after  { content: ',' }
+.glyph.dots:after       { content: '.' }
+.glyph.print:after      { content: '/' }
+.glyph.download:after   { content: '~' }
+.glyph.alert:after      { content: '!' }
+.glyph.pinpoint:after   { content: '@' }
+.glyph.trash:after      { content: '#' }
+.glyph.cart:after       { content: '$' }
+.glyph.cash:after       { content: '%' }
+.glyph.flag:after       { content: '^' }
+.glyph.plus:after       { content: '&' }
+.glyph.cross:after      { content: '*' }
+.glyph.lock:after       { content: '(' }
+.glyph.openlock:after   { content: ')' }
+.glyph.minus2:after     { content: '_' }
+.glyph.plus2:after      { content: '+' }
+.glyph.up:after         { content: '{' }
+.glyph.down:after       { content: '}' }
+.glyph.windows:after    { content: '|' }
+.glyph.alarm:after      { content: ':' }
+.glyph.quote:after      { content: '"' }
+.glyph.mute:after       { content: '<' }
+.glyph.sound:after      { content: '>' }
+.glyph.question:after   { content: '?' }

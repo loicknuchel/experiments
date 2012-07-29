@@ -1,0 +1,5 @@
+
+ - pouvoir refermer les "settings" avec la touche echap
+ 
+ 
+ 

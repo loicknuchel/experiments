@@ -1,0 +1,239 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Back-side app</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/bootstrap-override.css">
+	<style>
+	.page-content {
+    margin-top: 20px;
+	  margin-bottom: 40px;
+	}
+  .pre-modelview-container {
+    width: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: 60px;
+    right: 0px;
+  }
+  .pre-modelview-container:hover, .pre-modelview  {
+    width: 600px;
+  }
+  </style>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/settings.css">
+	<link rel="stylesheet" href="css/tests.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<script data-main="js/main" src="js/require.min.js"></script>
+	<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+    <!-- navbar -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Back-sight</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home<small>go home</small></a></li>
+              <li><a href="#about">About<small>go about</small></a></li>
+              <li><a href="#contact">Contact<small>go contact</small></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- settings panel -->
+    <div id="settings-top-panel" class="widgetBlock js-top-panel" data-widget-name="settings-panel">
+      <div class="panel">
+        <div class="container">
+          <div class="left">
+            <h1>Back-sight app</h1>
+            <h2>Have feedback on your activities</h2>		
+            <p>Register your tasks and have a global overview on when you are focused on them.</p>
+            <h2>Settings</h2>
+            <p>Create a user or switch user from the right colomn.</p>
+            <p>All datas are stored locally but you can make sync from the standard server or your.</p>
+          </div>
+          <div class="left">
+            <div>
+              <h1>Create user</h1>
+              <input type="text" data-bind="value: addUserField, valueUpdate: 'afterkeydown', enterKey: addUser" class="js-create-user" placeholder="Create a user">
+              <button data-bind="click: addUser" class="btn btn-inverse">add user</button>
+            </div>
+            <div data-bind="visible: curUser()" style="display: none;">
+              <h1>Change user</h1>
+              <select data-bind="options: users, optionsText: 'name', value: curUser"></select>
+              <button data-bind="click: deleteCurUser" class="btn btn-inverse">delete user</button>
+            </div>
+          </div>
+          <div data-bind="if: curUser()">
+            <div class="left right">		
+              <h1>Sync user</h1>
+              <p>This user is not sync.</p>
+              <p>If you whan to sync this user, enter the server url and check sync box.</p>
+              <input type="text" data-bind="value: curUser().syncUrl" placeholder="Sync server url"><br/>
+              <label for="sync-user"><input type="checkbox" data-bind="checked: curUser().sync" id="sync-user" /> Sync user</label>
+              <p>
+                To sync, you can use default server url :<br/>
+                <a>back-sight.lkws.fr/sync</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-toggle">
+        <ul>
+          <li class="left">&nbsp;</li>
+          <li><a class="js-toggle" href="#"><i class="icon-cogs"></i> Settings</a></li>
+          <li class="right">&nbsp;</li>
+        </ul> 
+      </div>
+    </div>
+    <div style="height: 40px;"></div>
+
+    <!-- page content -->
+    <div class="container page-content">
+      
+      <section id="app" class="widgetBlock" data-widget-name="KO-main">
+        <!-- to preview KO viewmodel content -->
+        <div class="pre-modelview-container"><pre data-bind="json: plainText()" class="pre-modelview"></pre></div>
+        
+        <section class="user" data-bind="if: curUser(), visible: curUser()" style="display: none;">
+          <h1>Bonjour <span data-bind="text: curUser().name()"></span></h1>
+          <div>
+            <!-- design, see : http://cssdeck.com/labs/cool-search-bar -->
+            <input type="text" data-bind="value: newTaskNameField, valueUpdate: 'afterkeydown', enterKey: addTask" placeholder="What are you planning to do?" autofocus>
+            <button data-bind="click: addTask" class="btn btn-inverse">add task</button>
+          </div>
+          <div>
+            <h2>All tasks</h2>
+            <ul data-bind="foreach: curUser().tasks()">
+              <li>
+                <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section data-bind="if: !curUser(), visible: !curUser()" style="display: none;">
+          <h1>Aucun utilisateur créé.</h1>
+          <button class="btn btn-inverse js-create-first-user">Créer le premier utilisateur</button>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--
+        <section class="user" data-bind="visible: curUser()" style="display: none;">
+          <input type="text" data-bind="value: addTaskField, valueUpdate: 'afterkeydown', enterKey: addTask" placeholder="What are you planning to do?" autofocus> <button data-bind="click: addTask" class="btn btn-inverse">add task</button><br/>
+          <section class="tasks" data-bind="visible: curUser() ? curUser().tasks().length : false" style="display: none;">
+            All tasks :
+            <ul class="task-list" data-bind="visible: curUser() ? curUser().tasks().length : false, foreach: curUser() ? curUser().tasks() : []" style="display: none;">
+              <li>
+                <div class="view">
+                  <input type="checkbox" title="run this task" data-bind="checked: running">
+                  <label data-bind="text: title"></label>
+                  <button data-bind="click: $root.deleteTask">delete</button>
+                  <input type="checkbox" title="archive this task" data-bind="checked: archive">
+                  <input type="checkbox" title="this task is done" data-bind="checked: done">
+                  <strong data-bind="visible: $data.running()">
+                    started on <span data-bind="visible: $data.started(), dateString: $data.started().start()"></span>
+                  </strong>
+                  <strong data-bind="visible: $data.runedtime()">
+                    spent <span data-bind="visible: $data.runedtime(), msToTime: $data.runedtime()"></span> on this task
+                  </strong>
+                </div>
+              </li>
+            </ul>
+            <strong>spent a total of <span data-bind="msToTime: curUser() ? (curUser().runedtime() > 0 ? curUser().runedtime() : 0) : ''"></span> on all task</strong>
+            <div class="task-lists">
+              <div style="float: left; width: 150px;">
+                Running tasks :
+                <ul class="task-list" data-bind="visible: runningTasks() ? runningTasks().length : false, foreach: runningTasks()" style="display: none;">
+                  <li>
+                    <div class="view">
+                      <input type="checkbox" data-bind="checked: running">
+                      <label data-bind="text: title"></label>
+                    </div>
+                  </li>
+                </ul>
+                <div data-bind="visible: runningTasks() ? runningTasks().length > 0 : false">
+                  <strong data-bind="text: runningTasks() ? runningTasks().length : 0"></strong> tache en cours
+                </div>
+              </div>
+              <div style="float: left; width: 150px;">
+                Waiting tasks :
+                <ul class="task-list" data-bind="visible: waitingTasks() ? waitingTasks().length : false, foreach: waitingTasks()" style="display: none;">
+                  <li>
+                    <div class="view">
+                      <input type="checkbox" data-bind="checked: running">
+                      <label data-bind="text: title"></label>
+                    </div>
+                  </li>
+                </ul>
+                <div data-bind="visible: waitingTasks() ? waitingTasks().length > 0 : false">
+                  <strong data-bind="text: waitingTasks() ? waitingTasks().length : 0"></strong> tache en attente
+                </div>
+              </div>
+              <div style="float: left; width: 150px;">
+                Archived tasks :
+                <ul class="task-list" data-bind="visible: archiveTasks() ? archiveTasks().length : false, foreach: archiveTasks()" style="display: none;">
+                  <li>
+                    <div class="view">
+                      <input type="checkbox" data-bind="checked: running">
+                      <label data-bind="text: title"></label>
+                    </div>
+                  </li>
+                </ul>
+                <div data-bind="visible: archiveTasks() ? archiveTasks().length > 0 : false">
+                  <strong data-bind="text: archiveTasks() ? archiveTasks().length : 0"></strong> tache archivées
+                </div>
+              </div>
+              <div style="float: left; width: 150px;">
+                Finished tasks :
+                <ul class="task-list" data-bind="visible: doneTasks() ? doneTasks().length : false, foreach: doneTasks()" style="display: none;">
+                  <li>
+                    <div class="view">
+                      <input type="checkbox" data-bind="checked: running">
+                      <label data-bind="text: title"></label>
+                    </div>
+                  </li>
+                </ul>
+                <div data-bind="visible: doneTasks() ? doneTasks().length > 0 : false">
+                  <strong data-bind="text: doneTasks() ? doneTasks().length : 0"></strong> tache terminées
+                </div>
+              </div>
+              <div style="clear: both;"></div>
+            </div>
+          </section>
+        </section>-->
+      
+
+      
+      
+      </section>
+  
+    </div> <!-- /container -->
+</body>
+</html>

@@ -17,34 +17,27 @@ define([
     */
     self.curUser = ko.observable().syncWith(g.topic.curUser, true);
     
-    /*self.runningTasks = ko.computed(function() {
+    self.runningTasks = ko.computed(function() {
       if(self.curUser()){
         return ko.utils.arrayFilter(self.curUser().tasks(), function(task) {
-          return task.running();
+          return task.status() == g.model.task.status.run;
         });
       }
     }, self);
     self.waitingTasks = ko.computed(function() {
       if(self.curUser()){
         return ko.utils.arrayFilter(self.curUser().tasks(), function(task) {
-          return !task.running() && !task.archive() && !task.done();
-        });
-      }
-    }, self);
-    self.archiveTasks = ko.computed(function() {
-      if(self.curUser()){
-        return ko.utils.arrayFilter(self.curUser().tasks(), function(task) {
-          return !task.running() && task.archive();
+          return task.status() == g.model.task.status.wait;
         });
       }
     }, self);
     self.doneTasks = ko.computed(function() {
       if(self.curUser()){
         return ko.utils.arrayFilter(self.curUser().tasks(), function(task) {
-          return task.done();
+          return task.status() == g.model.task.status.done;
         });
       }
-    }, self);*/
+    }, self);
     
     // fields
     self.newTaskNameField = ko.observable();
@@ -60,6 +53,11 @@ define([
     self.deleteTask = function( task ) {
       self.curUser().tasks.remove( task );
     };
+    
+    self.startTask = function( task ) { task.status(g.model.task.status.run); };
+    self.stopTask = function( task ) { task.status(g.model.task.status.wait); };
+    self.finishTask = function( task ) { task.status(g.model.task.status.done); };
+    self.archiveTask = function( task ) { task.status(g.model.task.status.archive); };
     
     
     

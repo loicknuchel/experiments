@@ -28,6 +28,7 @@
     position: absolute;
     top: 60px;
     right: 0px;
+    z-index: 10000;
   }
   .pre-modelview-container:hover, .pre-modelview  {
     width: 600px;
@@ -35,6 +36,8 @@
   </style>
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/settings.css">
+	<link rel="stylesheet" href="css/task-list.css">
+	<link rel="stylesheet" href="css/spinner.css">
 	<link rel="stylesheet" href="css/tests.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -116,18 +119,62 @@
         
         <section class="user" data-bind="if: curUser(), visible: curUser()" style="display: none;">
           <h1>Bonjour <span data-bind="text: curUser().name()"></span></h1>
-          <div>
+          <div class="form-inline">
             <!-- design, see : http://cssdeck.com/labs/cool-search-bar -->
             <input type="text" data-bind="value: newTaskNameField, valueUpdate: 'afterkeydown', enterKey: addTask" placeholder="What are you planning to do?" autofocus>
             <button data-bind="click: addTask" class="btn btn-inverse">add task</button>
           </div>
+          <br/>
+          <div data-bind="if: runningTasks().length > 0">
+            <div class="task-list black">
+              <ul data-bind="foreach: runningTasks()">
+                <li>
+                  <div class="glossy-loading"><div class="circle1"></div><div class="circle2"></div></div>
+                  <div class="content">
+                    <span data-bind="text: name"></span> - <a href="#" data-bind="click: $root.stopTask">stop</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div data-bind="if: waitingTasks().length > 0">
+            <div class="task-list black">
+              <ul data-bind="foreach: waitingTasks()">
+                <li>
+                  <div class="content">
+                    <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span> - <a href="#" data-bind="click: $root.startTask">start</a> - <a href="#" data-bind="click: $root.finishTask">terminé</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div data-bind="if: doneTasks().length > 0">
+            <div class="task-list black">
+              <ul data-bind="foreach: doneTasks()">
+                <li>
+                  <div class="content">
+                    <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span> - <a href="#" data-bind="click: $root.archiveTask">archive</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
           <div>
-            <h2>All tasks</h2>
-            <ul data-bind="foreach: curUser().tasks()">
-              <li>
-                <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span>
-              </li>
-            </ul>
+            <h2>All tasks :</h2>
+            <div class="task-list black">
+              <ul data-bind="foreach: curUser().tasks()">
+                <li>
+                  <div class="content">
+                    <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span> (<span data-bind="text: status"></span>)
+                    <ul class="dataList">
+                      <li><a href="#" title="">email@domain.com</a></li>
+                      <li><span class="red">+5488734455</span></li>
+                      <li><span class="cNote">friend</span></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
         <section data-bind="if: !curUser(), visible: !curUser()" style="display: none;">

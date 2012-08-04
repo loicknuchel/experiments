@@ -44,7 +44,9 @@ define([
     // fields
     self.omniboxText = ko.observable(); // content of omnibox
     self.actionToExecute = ko.computed(function(){
-      return Omnibox.toString(Omnibox.eval(self.omniboxText(), self.curUser().tasks()));
+      if(self.curUser()){
+        return Omnibox.toHTML(Omnibox.eval(self.omniboxText(), self.curUser().tasks()));
+      }
     });
     
     self.startTask = function( task )   { task.status(g.model.task.status.run); };
@@ -102,8 +104,6 @@ define([
           }
           self.omniboxText( '' );
         }
-      } else {
-        console.log('task "'+omni.text+'" does not exist !');
       }
     };
     

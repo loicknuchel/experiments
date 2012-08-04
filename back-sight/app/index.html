@@ -126,7 +126,7 @@
             </div>
           </div>
           
-          <div data-bind="if: runningTasks().length > 0">
+          <div data-bind="if: runningTasks() && runningTasks().length > 0">
             <div class="task-list black">
               <ul data-bind="foreach: runningTasks()">
                 <li data-bind="click: $root.expandTask, attr: { class: uiState }">

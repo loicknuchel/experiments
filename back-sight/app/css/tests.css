@@ -29,7 +29,7 @@
   font: bold 16px 'lucida sans', 'trebuchet MS', 'Tahoma';
   border: 0;
   color: #666;
-  background: #eee;
+  background: #bbb;
   border-radius: 3px 0 0 3px;      
 }
  
@@ -40,19 +40,19 @@
 }
  
 .omnibox input::-webkit-input-placeholder {
- color: #999;
+ color: #777;
  font-weight: normal;
  font-style: italic;
 }
  
 .omnibox input:-moz-placeholder {
-  color: #999;
+  color: #777;
   font-weight: normal;
   font-style: italic;
 }
  
 .omnibox input:-ms-input-placeholder {
-  color: #999;
+  color: #777;
   font-weight: normal;
   font-style: italic;
 }    

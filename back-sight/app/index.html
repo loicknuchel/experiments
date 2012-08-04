@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Back-side app</title>
+	<title>Back-sight app</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -52,8 +52,8 @@
           <a class="brand" href="#">Back-sight</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home<small>go home</small></a></li>
-              <li><a href="#about">About<small>go about</small></a></li>
+              <li class="active"><a href="#">Tâches<small>go app</small></a></li>
+              <li><a href="#about">A propos<small>go à propos</small></a></li>
               <li><a href="#contact">Contact<small>go contact</small></a></li>
             </ul>
           </div>
@@ -67,34 +67,36 @@
         <div class="container">
           <div class="left">
             <h1>Back-sight app</h1>
-            <h2>Have feedback on your activities</h2>		
-            <p>Register your tasks and have a global overview on when you are focused on them.</p>
-            <h2>Settings</h2>
-            <p>Create a user or switch user from the right colomn.</p>
-            <p>All datas are stored locally but you can make sync from the standard server or your.</p>
+            <h2>Suivre et analyser vos activités</h2>		
+            <p>Back-sight vous permet d'enregistrer et d'indiquer le temps passé sur vos différentes occupations.</p>
+            <p>L'ensemble des données sont enregistrées en local dans le navigateur.</p>
+            <p>Cela permet à la fois une utilisation hors-ligne et rapide et vous garanti une maitrise de vos données.</p>
+            <p>Pour une utilisation depuis plusieurs ordinateurs et pour plus de sécurité, vous pouvez synchroniser les données, soit sur le serveur back-sight soit sur votre propre serveur.</p>
           </div>
           <div class="left">
             <div>
-              <h1>Create user</h1>
-              <input type="text" data-bind="value: addUserField, valueUpdate: 'afterkeydown', enterKey: addUser" class="js-create-user" placeholder="Create a user">
-              <button data-bind="click: addUser" class="btn btn-inverse">add user</button>
+              <h1>Créer un utilisateur</h1>
+              <input type="text" data-bind="value: addUserField, valueUpdate: 'afterkeydown', enterKey: addUser" class="js-create-user" placeholder="nouvel utilisateur..."><br/>
+              <button data-bind="click: addUser" class="btn btn-inverse">créer</button>
             </div>
             <div data-bind="visible: curUser()" style="display: none;">
-              <h1>Change user</h1>
-              <select data-bind="options: users, optionsText: 'name', value: curUser"></select>
-              <button data-bind="click: deleteCurUser" class="btn btn-inverse">delete user</button>
+              <h1>Changer d'utilisateur</h1>
+              <select data-bind="options: users, optionsText: 'name', value: curUser"></select><br/>
+              <button data-bind="click: deleteCurUser" class="btn btn-inverse">supprimer cet utilisateur</button><br/>
+              <br/>
             </div>
           </div>
           <div data-bind="if: curUser()">
             <div class="left right">		
-              <h1>Sync user</h1>
-              <p>This user is not sync.</p>
-              <p>If you whan to sync this user, enter the server url and check sync box.</p>
-              <input type="text" data-bind="value: curUser().syncUrl" placeholder="Sync server url"><br/>
-              <label for="sync-user"><input type="checkbox" data-bind="checked: curUser().sync" id="sync-user" /> Sync user</label>
+              <h1>Synchroniser les données de <span data-bind="text: curUser().name()"></span></h1>
+              <p data-bind="if: !curUser().sync()" style="color: #BD362F;">Utilisateur non synchronisé !</p>
+              <p data-bind="if: curUser().sync()">Utilisateur synchronisé.</p>
+              <p>Pour activer la synchronisation, entrez l'adresse de synchronisation ici :</p>
+              <input type="text" data-bind="value: curUser().syncUrl" placeholder="Adresse de synchronisation"><br/>
+              <label for="sync-user"><input type="checkbox" data-bind="checked: curUser().sync" id="sync-user" /> activer la synchronisation</label>
               <p>
-                To sync, you can use default server url :<br/>
-                <a>back-sight.lkws.fr/sync</a>
+                L'adresse de synchronisation de back-sight est :<br/>
+                <a>http://back-sight.lkws.fr/sync</a>
               </p>
             </div>
           </div>
@@ -103,7 +105,7 @@
       <div class="panel-toggle">
         <ul>
           <li class="left">&nbsp;</li>
-          <li><a class="js-toggle" href="#"><i class="icon-cogs"></i> Settings</a></li>
+          <li><a class="js-toggle" href="#"><i class="icon-cogs"></i> Paramètres</a></li>
           <li class="right">&nbsp;</li>
         </ul> 
       </div>
@@ -130,8 +132,8 @@
             <div class="task-list black">
               <ul data-bind="foreach: runningTasks()">
                 <li data-bind="click: $root.expandTask, attr: { class: uiState }">
-                  <div class="glossy-loading"><div class="circle1"></div><div class="circle2"></div></div>
-                  <div class="btn btn-danger btn-stop" data-bind="click: $root.stopTask"></div>
+                  <div title="Tâche est en cours d'exécution" class="glossy-loading"><div class="circle1"></div><div class="circle2"></div></div>
+                  <div title="Arrêter cette tâche" class="btn btn-danger btn-stop" data-bind="click: $root.stopTask"></div>
                   <div class="primary-content">
                     <span data-bind="text: name"></span>
                   </div>
@@ -142,7 +144,7 @@
               </ul>
             </div>
           </div>
-          <div data-bind="if: waitingTasks().length > 0">
+          <div data-bind="if: waitingTasks() && waitingTasks().length > 0">
             <div class="task-list black">
               <ul data-bind="foreach: waitingTasks()">
                 <li>
@@ -154,7 +156,7 @@
               </ul>
             </div>
           </div>
-          <div data-bind="if: doneTasks().length > 0">
+          <div data-bind="if: doneTasks() && doneTasks().length > 0">
             <div class="task-list black">
               <ul data-bind="foreach: doneTasks()">
                 <li>
@@ -167,124 +169,38 @@
             </div>
           </div>
           <div data-bind="if: debug, visible: debug" style="display: none;">
-            <h2>All tasks :</h2>
-            <div class="task-list black">
-              <ul data-bind="foreach: curUser().tasks()">
-                <li>
-                  <div class="primary-content">
-                    <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span> (<span data-bind="text: status"></span>)
-                    <ul class="dataList">
-                      <li><a href="#" title="">email@domain.com</a></li>
-                      <li><span class="red">+5488734455</span></li>
-                      <li><span class="cNote">friend</span></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
+            <div data-bind="if: curUser().tasks() && curUser().tasks().length > 0">
+              <h2>All tasks :</h2>
+              <div class="task-list black">
+                <ul data-bind="foreach: curUser().tasks()">
+                  <li>
+                    <div class="primary-content">
+                      <a href="#" data-bind="click: $root.deleteTask">x</a> - <span data-bind="text: name"></span> (<span data-bind="text: status"></span>)
+                      <ul class="dataList">
+                        <li><a href="#" title="">email@domain.com</a></li>
+                        <li><span class="red">+5488734455</span></li>
+                        <li><span class="cNote">friend</span></li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
         <section data-bind="if: !curUser(), visible: !curUser()" style="display: none;">
-          <h1>Aucun utilisateur créé.</h1>
-          <button class="btn btn-inverse js-create-first-user">Créer le premier utilisateur</button>
+          <div>
+            <h1>Aucun utilisateur existant.</h1>
+            <button class="btn btn-inverse js-create-first-user">Créer le premier utilisateur</button>
+          </div>
+          <br/>
+          <p>
+            Back-sight app est une application de suivi de ses tâches avec mesure du temps passé.<br/>
+            L'application est actuellement au <i><b>début de son développement</b></i> mais vous pouvez la tester si vous le souhaitez.
+          </p>
         </section>
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        <!--
-        <section class="user" data-bind="visible: curUser()" style="display: none;">
-          <input type="text" data-bind="value: addTaskField, valueUpdate: 'afterkeydown', enterKey: addTask" placeholder="What are you planning to do?" autofocus> <button data-bind="click: addTask" class="btn btn-inverse">add task</button><br/>
-          <section class="tasks" data-bind="visible: curUser() ? curUser().tasks().length : false" style="display: none;">
-            All tasks :
-            <ul class="task-list" data-bind="visible: curUser() ? curUser().tasks().length : false, foreach: curUser() ? curUser().tasks() : []" style="display: none;">
-              <li>
-                <div class="view">
-                  <input type="checkbox" title="run this task" data-bind="checked: running">
-                  <label data-bind="text: title"></label>
-                  <button data-bind="click: $root.deleteTask">delete</button>
-                  <input type="checkbox" title="archive this task" data-bind="checked: archive">
-                  <input type="checkbox" title="this task is done" data-bind="checked: done">
-                  <strong data-bind="visible: $data.running()">
-                    started on <span data-bind="visible: $data.started(), dateString: $data.started().start()"></span>
-                  </strong>
-                  <strong data-bind="visible: $data.runedtime()">
-                    spent <span data-bind="visible: $data.runedtime(), msToTime: $data.runedtime()"></span> on this task
-                  </strong>
-                </div>
-              </li>
-            </ul>
-            <strong>spent a total of <span data-bind="msToTime: curUser() ? (curUser().runedtime() > 0 ? curUser().runedtime() : 0) : ''"></span> on all task</strong>
-            <div class="task-lists">
-              <div style="float: left; width: 150px;">
-                Running tasks :
-                <ul class="task-list" data-bind="visible: runningTasks() ? runningTasks().length : false, foreach: runningTasks()" style="display: none;">
-                  <li>
-                    <div class="view">
-                      <input type="checkbox" data-bind="checked: running">
-                      <label data-bind="text: title"></label>
-                    </div>
-                  </li>
-                </ul>
-                <div data-bind="visible: runningTasks() ? runningTasks().length > 0 : false">
-                  <strong data-bind="text: runningTasks() ? runningTasks().length : 0"></strong> tache en cours
-                </div>
-              </div>
-              <div style="float: left; width: 150px;">
-                Waiting tasks :
-                <ul class="task-list" data-bind="visible: waitingTasks() ? waitingTasks().length : false, foreach: waitingTasks()" style="display: none;">
-                  <li>
-                    <div class="view">
-                      <input type="checkbox" data-bind="checked: running">
-                      <label data-bind="text: title"></label>
-                    </div>
-                  </li>
-                </ul>
-                <div data-bind="visible: waitingTasks() ? waitingTasks().length > 0 : false">
-                  <strong data-bind="text: waitingTasks() ? waitingTasks().length : 0"></strong> tache en attente
-                </div>
-              </div>
-              <div style="float: left; width: 150px;">
-                Archived tasks :
-                <ul class="task-list" data-bind="visible: archiveTasks() ? archiveTasks().length : false, foreach: archiveTasks()" style="display: none;">
-                  <li>
-                    <div class="view">
-                      <input type="checkbox" data-bind="checked: running">
-                      <label data-bind="text: title"></label>
-                    </div>
-                  </li>
-                </ul>
-                <div data-bind="visible: archiveTasks() ? archiveTasks().length > 0 : false">
-                  <strong data-bind="text: archiveTasks() ? archiveTasks().length : 0"></strong> tache archivées
-                </div>
-              </div>
-              <div style="float: left; width: 150px;">
-                Finished tasks :
-                <ul class="task-list" data-bind="visible: doneTasks() ? doneTasks().length : false, foreach: doneTasks()" style="display: none;">
-                  <li>
-                    <div class="view">
-                      <input type="checkbox" data-bind="checked: running">
-                      <label data-bind="text: title"></label>
-                    </div>
-                  </li>
-                </ul>
-                <div data-bind="visible: doneTasks() ? doneTasks().length > 0 : false">
-                  <strong data-bind="text: doneTasks() ? doneTasks().length : 0"></strong> tache terminées
-                </div>
-              </div>
-              <div style="clear: both;"></div>
-            </div>
-          </section>
-        </section>-->
-      
-
-      
       
       </section>
   

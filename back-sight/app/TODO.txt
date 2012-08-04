@@ -1,5 +1,9 @@
 
- - pouvoir refermer les "settings" avec la touche echap
- 
+ - renommer les tâche
+ - chronométrer les tâches
+ - tagger les tâches
+ - commenter, annoter et mettre une description sur les tâches
+ - pouvoir synchroniser les tâche sur un serveur externe
+ - pouvoir télécharger un backup des tâches
  
  

@@ -15,7 +15,7 @@ define([
       return new User( user );
     }));
     
-    // set the selected user to current iser
+    // set the selected user to current user
     self.curUser = ko.observable( (function(users, selected){
         if(users && users.length > 0){
           for(var i in users){
@@ -46,7 +46,11 @@ define([
       self.users.remove(function(user){
         return user.name() == name;
       });
-      self.curUser(self.users[0]);
+      if(self.users.length > 0){
+        self.curUser(self.users[0]);
+      } else {
+        self.curUser(undefined);
+      }
     };
     
     // internal computed observable that fires whenever anything changes in our tasks

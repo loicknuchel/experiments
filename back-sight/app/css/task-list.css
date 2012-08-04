@@ -1,5 +1,9 @@
 
 /* Task list, from http://themes.kopyov.com/itsbrain/fixed/dark/contacts.html */
+
+/**************************/
+/* global list item style */
+/**************************/
 .task-list {
   display: block;
   color: #D5D5D5;
@@ -62,12 +66,84 @@
   background: -webkit-linear-gradient(top, #202020 0%, #161616 100%);
 }
 
-/* Task list - content */
-.task-list > ul > li .content {
-  padding: 8px 0 8px 12px;
+/*****************************/
+/* style for visible content */
+/*****************************/
+.task-list > ul > li .primary-content {
+  padding: 8px 12px;
 }
 
-/* Task list - dataList */
+/******************************/
+/* style for expanded content */
+/******************************/
+.task-list > ul > li .expanded-content {
+  padding: 8px 12px;
+  display: none;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+.task-list > ul > li.expanded .expanded-content {
+  display: block;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+
+/*******************************/
+/* style for Task list buttons */
+/*******************************/
+.task-list > ul > li .btn-start {
+  float: left;
+  width: 18px;
+  height: 18px;
+  margin: 8px;
+  margin-right: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.task-list > ul > li .btn-start .btn-start-inner {
+  width: 0px;
+  height: 0px;
+  margin-left: 50%;
+  margin-top: 50%;
+  left: -6px;
+  top: -7px;
+  position: relative;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #22a9db;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+.task-list > ul > li .btn-start:hover .btn-start-inner { border-left: 12px solid #45bde9 }
+.task-list > ul > li .btn-start:active .btn-start-inner { border-left: 12px solid #e94545 }
+
+.task-list > ul > li .btn-stop {
+  display: block;
+  float: right;
+  width: 15px;
+  height: 15px;
+  margin: 8px;
+  padding: 0px;
+}
+.task-list > ul > li .btn-archive {
+  float: left;
+  width: 18px;
+  height: 18px;
+  margin: 8px;
+  margin-right: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.task-list > ul > li .btn-archive i {
+  color: #15ADFF;
+}
+
+/***********************************/
+/* style for dataList in Task list */
+/***********************************/
 .task-list > ul > li ul.dataList {
   float: right;
   list-style: none;

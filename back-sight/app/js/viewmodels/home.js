@@ -1,14 +1,16 @@
 define([
   'knockout',
   'config/global',
+  'utils/Omnibox',
   'models/User',
   'models/Task',
   'knockout-postbox'
-], function(ko, g, User, Task){
+], function(ko, g, Omnibox, User, Task){
   'use strict';
   // our main datas model
   var ViewModel = function() {
     var self = this;
+    self.debug = g.debug;
     
     /*
       Lors de la synchronisation, c'est le dernier déclaré qui donne la valeur initiale. 
@@ -40,25 +42,70 @@ define([
     }, self);
     
     // fields
-    self.newTaskNameField = ko.observable();
+    self.omniboxText = ko.observable(); // content of omnibox
+    self.actionToExecute = ko.computed(function(){
+      return Omnibox.toString(Omnibox.eval(self.omniboxText(), self.curUser().tasks()));
+    });
     
-    self.addTask = function() {
-      var newTaskNameField = self.newTaskNameField().trim();
-      if ( newTaskNameField ) {
-        self.curUser().tasks.push( new Task({ name:newTaskNameField }) );
-        self.newTaskNameField( '' );
+    self.startTask = function( task )   { task.status(g.model.task.status.run); };
+    self.stopTask = function( task )    { task.status(g.model.task.status.wait); };
+    self.finishTask = function( task )  { task.status(g.model.task.status.done); };
+    self.archiveTask = function( task ) { task.status(g.model.task.status.archive); };
+    self.deleteTask = function( task )  { self.curUser().tasks.remove( task ); };
+    
+    /* task ui State */
+    self.expandedTask;
+    self.expandTask = function( task ){
+      if(task.uiState() == ''){
+        if(self.expandedTask){
+          self.expandedTask.uiState('');
+        }
+        self.expandedTask = task;
+        task.uiState('expanded');
+      } else {
+        task.uiState('');
       }
     };
     
-    self.deleteTask = function( task ) {
-      self.curUser().tasks.remove( task );
+    // execute action in omnibox
+    self.omniEval = function() {
+      var omni = Omnibox.eval(self.omniboxText(), self.curUser().tasks());
+      console.log(self.omniboxText() + ' => ' + Omnibox.toString(omni));
+      var tmpTask = omni.task ? omni.task : (omni.tasks && omni.tasks.length == 1 ? omni.tasks[0] : undefined);
+      if(omni.action == g.omnibox.action.add.id){
+        if(!omni.task){
+          self.curUser().tasks.push( new Task({ name:omni.text }) );
+          self.omniboxText( '' );
+        } else {
+          console.log('"'+omni.text+'" task already exist !');
+        }
+      } else if((!omni.multi && tmpTask) || (omni.multi && omni.tasks && omni.tasks.length > 0)){
+        var exec = true, execFunc;
+        
+             if(omni.action == g.omnibox.action.start.id    || omni.action == g.omnibox.action.startall.id)   { execFunc = self.startTask; }
+        else if(omni.action == g.omnibox.action.stop.id     || omni.action == g.omnibox.action.stopall.id)    { execFunc = self.stopTask; }
+        else if(omni.action == g.omnibox.action.finish.id   || omni.action == g.omnibox.action.finishall.id)  { execFunc = self.finishTask; }
+        else if(omni.action == g.omnibox.action.archive.id  || omni.action == g.omnibox.action.archiveall.id) { execFunc = self.archiveTask; } 
+        else if(omni.action == g.omnibox.action.remove.id   || omni.action == g.omnibox.action.removeall.id)  { execFunc = self.deleteTask; }
+        else {
+          exec = false;
+          console.log('Unknown action id '+omni.action+' (cf g.omnibox.action) !');
+        }
+        
+        if(exec){
+          if(omni.multi){
+            for(var i=omni.tasks.length-1; i>=0; i--){
+              execFunc(omni.tasks[i]);
+            }
+          } else{
+            execFunc(tmpTask);
+          }
+          self.omniboxText( '' );
+        }
+      } else {
+        console.log('task "'+omni.text+'" does not exist !');
+      }
     };
-    
-    self.startTask = function( task ) { task.status(g.model.task.status.run); };
-    self.stopTask = function( task ) { task.status(g.model.task.status.wait); };
-    self.finishTask = function( task ) { task.status(g.model.task.status.done); };
-    self.archiveTask = function( task ) { task.status(g.model.task.status.archive); };
-    
     
     
     // to display KO viewmodel content !

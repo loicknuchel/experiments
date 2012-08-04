@@ -19,6 +19,7 @@ define([
     self.status = ko.observable( task.status || g.model.task.status.wait );
     self.created = ko.observable( task.created || new Date() );
     
+    self.uiState = ko.observable( task.uiState || '' );
   };
   return Task;
 });

@@ -9,10 +9,12 @@ define([
   ko.bindingHandlers.json = {
     update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
       var value = valueAccessor();
-      value = value.replace(/{\n( *)"start":(.*),\n( *)"stop":(.*)\n( *)}/g, '{"start:$2, "stop":$4}');  // un Run est affiché sur une ligne dans il est terminé
-      value = value.replace(/{\n( *)"start":(.*)\n( *)}/g, '{"start:$2}');                                // idem pour un Run en cours
-      value = value.replace(/\n( *)},\n( *){\n/g, '\n$1},{\n');                                           // gain d'une ligne entre 2 éléments d'un tableau
-      value = value.replace(/( *)"_(.*)":(.*)\n/g, '');                                                   // suppression de la ligne des propritétés commençant par _
+      value = value.replace(/{\n( *)"start":(.*),\n( *)"stop":(.*),\n( *)"comment":(.*)\n( *)}/g, '{"start:$2, "stop":$4, "comment":$6}');  // un Run est affiché sur une ligne quand il est terminé (avec commentaire)
+      value = value.replace(/{\n( *)"start":(.*),\n( *)"stop":(.*)\n( *)}/g, '{"start:$2, "stop":$4}');                                     // un Run est affiché sur une ligne quand il est terminé (sans commentaire)
+      value = value.replace(/{\n( *)"start":(.*)\n( *)}/g, '{"start:$2}');                                                                  // un Run est affiché sur une ligne quand il est en cours
+      value = value.replace(/\n( *)},\n( *){\n/g, '\n$1},{\n');                                                                             // gain d'une ligne entre 2 éléments d'un tableau (les tâches par ex)
+      value = value.replace(/,\n( *)"(.*)": {\n( *)/g, ',\n$1"$2": {');                                                                     // mise sur 1 ligne des objets vides
+      value = value.replace(/( *)"_(.*)":(.*)\n/g, '');                                                                                     // suppression de la ligne des propritétés commençant par _
       $(element).text(value);
     }
   };

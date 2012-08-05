@@ -35,6 +35,7 @@ define([
     
     /*private Run*/ var lastRun = ko.observable(self.runs().length > 0 ? self.runs()[self.runs().length-1] : undefined);
     /*public Date*/ self.startExec = ko.computed(function(){ return lastRun() ? lastRun().start() : undefined });
+    /*public String*/ self.runComment = ko.computed(function(){ return lastRun() ? lastRun().comment : undefined });
     
     /*private moment*/ var startMoment;
     /*private interval*/ var interval;

@@ -29,9 +29,10 @@
     top: 60px;
     right: 0px;
     z-index: 10000;
+    padding-right: 10px;
   }
   .pre-modelview-container:hover, .pre-modelview  {
-    width: 600px;
+    width: 750px;
   }
   </style>
 	<link rel="stylesheet" href="css/global.css">
@@ -134,17 +135,19 @@
           <div data-bind="if: runningTasks() && runningTasks().length > 0">
             <div class="task-list black">
               <ul data-bind="foreach: runningTasks()">
-                <li data-bind="click: $root.expandTask, attr: { class: uiState }">
+                <li>
                   <div title="Tâche est en cours d'exécution" class="glossy-loading"><div class="circle1"></div><div class="circle2"></div></div>
                   <div title="Arrêter cette tâche" class="btn btn-danger btn-stop" data-bind="click: $root.stopTask"></div>
                   <div class="primary-content">
-                    <span data-bind="text: name"></span>
-                    <div class="pull-right">
+                    <div class="left">
+                      <span data-bind="text: name"></span>
+                    </div>
+                    <div class="center">
+                      <input type="text" data-bind="value: runComment()" placeholder="Que faites vous ?" />
+                    </div>
+                    <div class="right">
                       <span data-bind="text: startPeriod()"></span>
                     </div>
-                  </div>
-                  <div class="expanded-content">
-                    Bonjour tout le monde :) 
                   </div>
                 </li>
               </ul>
@@ -153,10 +156,14 @@
           <div data-bind="if: waitingTasks() && waitingTasks().length > 0">
             <div class="task-list black">
               <ul data-bind="foreach: waitingTasks()">
-                <li>
+                <li data-bind="click: $root.expandTask, attr: { class: uiState }">
                   <div class="btn-start" title="Démarrer cette tâche" data-bind="click: $root.startTask"><div class="btn-start-inner"></div></div>
                   <div class="primary-content">
                     <span data-bind="text: name"></span> - <a href="#" data-bind="click: $root.finishTask">terminer</a> - <a href="#" data-bind="click: $root.deleteTask">supprimer</a>
+                  </div>
+                  <div class="expanded-content">
+                    Ceci est du contenu étendu !<br/>
+                    Bientôt ici, une description et des notes sur la tâche !
                   </div>
                 </li>
               </ul>
@@ -165,10 +172,14 @@
           <div data-bind="if: doneTasks() && doneTasks().length > 0">
             <div class="task-list black">
               <ul data-bind="foreach: doneTasks()">
-                <li>
+                <li data-bind="click: $root.expandTask, attr: { class: uiState }">
                   <div class="btn-archive" title="Archiver cette tâche"><i class="icon-download-alt" data-bind="click: $root.archiveTask"></i></div>
                   <div class="primary-content">
                     <span data-bind="text: name"></span> - <a href="#" data-bind="click: $root.deleteTask">supprimer</a>
+                  </div>
+                  <div class="expanded-content">
+                    Ceci est du contenu étendu !<br/>
+                    Bientôt ici, une description et des notes sur la tâche !
                   </div>
                 </li>
               </ul>

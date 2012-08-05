@@ -70,12 +70,41 @@
 /* style for visible content */
 /*****************************/
 .task-list > ul > li .primary-content {
-  padding: 8px 12px;
+  position: relative;
+  margin-left: 38px;
+  margin-right: 31px;
+  padding: 8px 0px;
+}
+
+.task-list > ul > li .primary-content .left {
+  display: inline;
+}
+
+.task-list > ul > li .primary-content .center {
+  display: inline;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+}
+
+.task-list > ul > li .primary-content .center input {
+  margin-top: -2px;
+  margin-bottom: 0px;
+  padding: 1px 4px;
+}
+
+.task-list > ul > li .primary-content .right {
+  display: inline;
+  float: right;
 }
 
 /******************************/
 /* style for expanded content */
 /******************************/
+.task-list > ul > li.expanded {
+  margin: 6px 0px;
+}
+
 .task-list > ul > li .expanded-content {
   padding: 8px 12px;
   display: none;
@@ -97,9 +126,7 @@
   float: left;
   width: 18px;
   height: 18px;
-  margin: 8px;
-  margin-right: 15px;
-  margin-left: 10px;
+  margin: 8px 10px;
   cursor: pointer;
 }
 .task-list > ul > li .btn-start .btn-start-inner {
@@ -132,9 +159,7 @@
   float: left;
   width: 18px;
   height: 18px;
-  margin: 8px;
-  margin-right: 15px;
-  margin-left: 10px;
+  margin: 8px 10px;
   cursor: pointer;
 }
 .task-list > ul > li .btn-archive i {

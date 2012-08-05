@@ -166,7 +166,7 @@ define([
       if(evalObj.action){
         if(evalObj.action == g.omnibox.action.add.id){
           if(evalObj.task){
-            return err1+'Impossible de ' + evalObj.actionName + ' la tâche "' + evalObj.text + '" : elle existe déjà !'+err2;
+            return err1+'La tâche "' + evalObj.text + '" existe déjà !'+err2;
           } else if(evalObj.text && evalObj.text.length > 0){
             return evalObj.actionName + ' la tâche "' + evalObj.text + '"';
           } else {

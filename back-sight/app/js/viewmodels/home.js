@@ -2,11 +2,13 @@ define([
   'knockout',
   'config/global',
   'utils/Omnibox',
+  'utils/Assert',
   'models/User',
   'models/Task',
   'knockout-postbox'
-], function(ko, g, Omnibox, User, Task){
+], function(ko, g, Omnibox, Assert, User, Task){
   'use strict';
+  
   // our main datas model
   var ViewModel = function() {
     var self = this;
@@ -18,11 +20,13 @@ define([
       Il est donc nécessaire de passer le initUser depuis les settings jusqu'ici pour que l'application soit correctement initialisée.
     */
     self.curUser = ko.observable().syncWith(g.topic.curUser, true);
-    
+        
     self.runningTasks = ko.computed(function() {
       if(self.curUser()){
         return ko.utils.arrayFilter(self.curUser().tasks(), function(task) {
           return task.status() == g.model.task.status.run;
+        }).sort(function(left, right){
+          return left.startExec() < right.startExec();
         });
       }
     }, self);
@@ -30,6 +34,8 @@ define([
       if(self.curUser()){
         return ko.utils.arrayFilter(self.curUser().tasks(), function(task) {
           return task.status() == g.model.task.status.wait;
+        }).sort(function(left, right){
+          return left.name() < left.name();
         });
       }
     }, self);
@@ -49,6 +55,8 @@ define([
       }
     });
     
+    /*self.startTask = function( task )   { task.setStart(); };
+    self.stopTask = function( task )    { task.setStop(); };*/
     self.startTask = function( task )   { task.status(g.model.task.status.run); };
     self.stopTask = function( task )    { task.status(g.model.task.status.wait); };
     self.finishTask = function( task )  { task.status(g.model.task.status.done); };

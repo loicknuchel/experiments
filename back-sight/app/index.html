@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<!-- <link rel="stylesheet" href="css/bootstrap-responsive.min.css"> -->
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/bootstrap-override.css">
 	<style>
@@ -36,6 +36,7 @@
   </style>
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/settings.css">
+	<link rel="stylesheet" href="css/omnibox.css">
 	<link rel="stylesheet" href="css/task-list.css">
 	<link rel="stylesheet" href="css/spinner.css">
 	<link rel="stylesheet" href="css/tests.css">
@@ -88,12 +89,14 @@
           </div>
           <div data-bind="if: curUser()">
             <div class="left right">		
-              <h1>Synchroniser les données de <span data-bind="text: curUser().name()"></span></h1>
-              <p data-bind="if: !curUser().sync()" style="color: #BD362F;">Utilisateur non synchronisé !</p>
-              <p data-bind="if: curUser().sync()">Utilisateur synchronisé.</p>
+              <h1>Synchroniser les données de <span data-bind="text: curUser().name()" style="white-space : pre;"></span></h1>
+              <p data-bind="if: !curUser().sync() || !curUser().syncUrl()" style="color: #BD362F;">Utilisateur non synchronisé !</p>
+              <p data-bind="if: curUser().sync() && curUser().syncUrl()">Utilisateur synchronisé.</p>
               <p>Pour activer la synchronisation, entrez l'adresse de synchronisation ici :</p>
               <input type="text" data-bind="value: curUser().syncUrl" placeholder="Adresse de synchronisation"><br/>
-              <label for="sync-user"><input type="checkbox" data-bind="checked: curUser().sync" id="sync-user" /> activer la synchronisation</label>
+              <div data-bind="if: curUser().syncUrl">
+                <label for="sync-user"><input type="checkbox" data-bind="checked: curUser().sync" id="sync-user" /> activer la synchronisation</label>
+              </div>
               <p>
                 L'adresse de synchronisation de back-sight est :<br/>
                 <a>http://back-sight.lkws.fr/sync</a>
@@ -122,7 +125,7 @@
         <section class="user" data-bind="if: curUser(), visible: curUser()" style="display: none;">
           <div class="form-inline omnibox">
             <input type="text" data-bind="value: omniboxText, valueUpdate: 'afterkeydown', enterKey: omniEval" placeholder="Que faire ?" autofocus>
-            <button data-bind="click: omniEval" class="btn btn-inverse">Valider</button>
+            <button data-bind="click: omniEval" class="btn btn-inverse js-omnibox-popover">Valider</button>
             <div class="omnibox-action">
               <div data-bind="html: actionToExecute"></div>
             </div>
@@ -136,6 +139,9 @@
                   <div title="Arrêter cette tâche" class="btn btn-danger btn-stop" data-bind="click: $root.stopTask"></div>
                   <div class="primary-content">
                     <span data-bind="text: name"></span>
+                    <div class="pull-right">
+                      <span data-bind="text: startPeriod()"></span>
+                    </div>
                   </div>
                   <div class="expanded-content">
                     Bonjour tout le monde :) 
